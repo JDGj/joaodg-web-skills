@@ -34,8 +34,8 @@
     {
       "name": "ponytail",
       "source": {
-        "source": "github",
-        "repo": "DietrichGebert/ponytail"
+        "source": "url",
+        "url": "https://github.com/DietrichGebert/ponytail.git"
       },
       "description": "Modo senior preguicoso: forca a solucao mais simples que funciona (YAGNI, stdlib primeiro, uma linha em vez de cinquenta). Inclui ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain e ponytail-help.",
       "author": {
