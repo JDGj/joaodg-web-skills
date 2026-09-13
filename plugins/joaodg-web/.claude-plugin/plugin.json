@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "joaodg-web",
+  "displayName": "JoaoDG Web",
+  "description": "Skills proprias do estudio JoaoDG.",
+  "author": {
+    "name": "Joao",
+    "url": "https://joaodg.pt"
+  },
+  "homepage": "https://joaodg.pt",
+  "keywords": ["joaodg", "web", "wordpress", "nextjs"]
+}

@@ -1,0 +1,15 @@
+{
+  "extraKnownMarketplaces": {
+    "joaodg-web-skills": {
+      "source": {
+        "source": "github",
+        "repo": "JDGj/joaodg-web-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "joaodg-web@joaodg-web-skills": true,
+    "apple-design@joaodg-web-skills": true,
+    "ponytail@joaodg-web-skills": true
+  }
+}

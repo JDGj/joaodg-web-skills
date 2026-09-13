@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "joaodg-web-skills",
+  "description": "Skills e plugins usados pelo estudio JoaoDG em trabalho web.",
+  "owner": {
+    "name": "Joao",
+    "url": "https://joaodg.pt"
+  },
+  "plugins": [
+    {
+      "name": "joaodg-web",
+      "source": "./plugins/joaodg-web",
+      "description": "Skills proprias do estudio JoaoDG.",
+      "category": "development",
+      "tags": ["joaodg", "web"]
+    },
+    {
+      "name": "apple-design",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/emilkowalski/skills.git",
+        "path": "skills/apple-design"
+      },
+      "description": "Principios de design e movimento fluido da Apple, traduzidos para a web (springs, gestos, momentum, materiais translucidos, tipografia).",
+      "author": {
+        "name": "Emil Kowalski",
+        "url": "https://github.com/emilkowalski"
+      },
+      "homepage": "https://github.com/emilkowalski/skills",
+      "repository": "https://github.com/emilkowalski/skills",
+      "category": "design",
+      "tags": ["design", "animation", "frontend"]
+    },
+    {
+      "name": "ponytail",
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      },
+      "description": "Modo senior preguicoso: forca a solucao mais simples que funciona (YAGNI, stdlib primeiro, uma linha em vez de cinquenta). Inclui ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain e ponytail-help.",
+      "author": {
+        "name": "Dietrich Gebert",
+        "url": "https://github.com/DietrichGebert"
+      },
+      "homepage": "https://github.com/DietrichGebert/ponytail",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": ["yagni", "code-review", "minimalism"]
+    }
+  ]
+}
