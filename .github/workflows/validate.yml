@@ -19,3 +19,7 @@ jobs:
         run: claude plugin validate ./plugins/joaodg-web
       - name: Validate skill frontmatter
         run: claude plugin validate ./plugins/joaodg-web/skills
+      - name: Validate apollo plugin
+        run: claude plugin validate ./plugins/apollo
+      - name: Validate apollo skills
+        run: claude plugin validate ./plugins/apollo/skills

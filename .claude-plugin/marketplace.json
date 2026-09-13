@@ -12,7 +12,22 @@
       "source": "./plugins/joaodg-web",
       "description": "Skills proprias do estudio JoaoDG.",
       "category": "development",
-      "tags": ["joaodg", "web"]
+      "tags": [
+        "joaodg",
+        "web"
+      ]
+    },
+    {
+      "name": "apollo",
+      "source": "./plugins/apollo",
+      "description": "O assistente operacional do HeavenlyCo Group: identidade e ambito, briefing matinal, e a fronteira de acesso do ADR-001.",
+      "category": "productivity",
+      "tags": [
+        "apollo",
+        "heavenlyco",
+        "briefing",
+        "operacoes"
+      ]
     },
     {
       "name": "apple-design",
@@ -29,7 +44,11 @@
       "homepage": "https://github.com/emilkowalski/skills",
       "repository": "https://github.com/emilkowalski/skills",
       "category": "design",
-      "tags": ["design", "animation", "frontend"]
+      "tags": [
+        "design",
+        "animation",
+        "frontend"
+      ]
     },
     {
       "name": "ponytail",
@@ -46,7 +65,11 @@
       "repository": "https://github.com/DietrichGebert/ponytail",
       "license": "MIT",
       "category": "productivity",
-      "tags": ["yagni", "code-review", "minimalism"]
+      "tags": [
+        "yagni",
+        "code-review",
+        "minimalism"
+      ]
     }
   ]
 }
