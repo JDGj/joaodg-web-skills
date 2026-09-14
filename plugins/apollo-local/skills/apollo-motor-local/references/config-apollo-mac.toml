@@ -1,0 +1,76 @@
+# Apollo - preset para o Mac do João (o Jarvis a correr em casa, com o Claude
+# por cérebro)
+#
+# DERIVADO de configs/openjarvis/examples/morning-digest-mac.toml e
+# chat-simple.toml do projeto OpenJarvis (https://github.com/open-jarvis/OpenJarvis),
+# Apache License 2.0. ALTERADO pelo estúdio JoaoDG / HeavenlyCo Group em
+# 2026-09-14: motor "cloud" com um modelo Claude em vez do Ollama, persona,
+# tratamento, fuso horário, secções, fontes, voz e ferramentas trocados para o
+# âmbito do grupo; comentários reescritos.
+# Cópia da licença: plugins/apollo-local/LICENSE-Apache-2.0.txt
+#
+# Destino: ~/.openjarvis/config.toml  (ou $OPENJARVIS_HOME/config.toml)
+#
+# Diferença para o config-apollo.toml (servidor Linux): aqui o cérebro é o
+# Claude pela API, não um modelo local. O motor "cloud" do OpenJarvis lê a
+# ANTHROPIC_API_KEY do AMBIENTE (não deste ficheiro) e reconhece qualquer
+# modelo cujo nome contenha "claude". O que sai de casa nesta escolha é o texto
+# das conversas e dos digests; para ficar tudo em casa, trocar as duas linhas
+# do motor por: default = "ollama" e default_model = "qwen3.5:9b" (precisa de
+# `ollama pull qwen3.5:9b`).
+
+[engine]
+default = "cloud"
+
+[intelligence]
+default_model = "claude-opus-5"
+
+[agent]
+# "simple" conversa sem ferramentas. Para o Apollo executar ferramentas
+# (pesquisa, ler ficheiros) trocar por "react" - e ler antes a lista de
+# ferramentas abaixo, que é o que ele passa a poder fazer.
+default_agent = "simple"
+
+# shell_exec NÃO entra. Um assistente que lê correio de estranhos e sabe correr
+# comandos é a definição do problema. Ver ADR-001 (fronteira de acesso).
+[tools]
+enabled = ["web_search", "file_read", "digest_collect", "text_to_speech"]
+
+# `jarvis serve` liga a interface web aqui: http://127.0.0.1:8000
+[server]
+host = "127.0.0.1"
+port = 8000
+agent = "simple"
+
+# --- Briefing matinal ------------------------------------------------------
+
+[digest]
+enabled = true
+schedule = "0 7 * * *"
+timezone = "Europe/Lisbon"
+
+# O nome carrega ~/.openjarvis/prompts/personas/apollo.md. Uma gralha aqui NÃO
+# dá erro: o briefing sai sem persona nenhuma. Confirmar o ficheiro depois de
+# instalar e depois de cada atualização.
+persona = "apollo"
+
+# Em português não há "sir". O espaço do tratamento é o nome.
+honorific = "João"
+
+# Voz local (kokoro, `pip install kokoro` no venv do OpenJarvis se faltar; só
+# tem português do Brasil, prefixo "p"). Sem voz instalada, o briefing continua
+# a funcionar em texto: `jarvis digest --text-only`.
+tts_backend = "kokoro"
+voice_id = "pf_dora"
+voice_speed = 1.0
+
+# Duas das cinco fontes do briefing. Painel, Stripe e Cloudflare não têm
+# conector no motor - ver a skill apollo-motor-local. As duas que há precisam
+# de ser ligadas uma vez: `jarvis connect --help`.
+sections = ["calendar", "messages"]
+
+[digest.calendar]
+sources = ["gcalendar"]
+
+[digest.messages]
+sources = ["gmail"]

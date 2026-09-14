@@ -16,11 +16,12 @@ terceiros a propagar (Apache 2.0, secção 4(d)).
 ## Ficheiros derivados, e o que foi alterado
 
 A Apache 2.0, secção 4(b), obriga a marcar os ficheiros modificados. Neste
-plugin há um:
+plugin há dois:
 
 | Ficheiro aqui | Origem | Alterações |
 |---|---|---|
 | `skills/apollo-motor-local/references/config-apollo.toml` | `configs/openjarvis/examples/morning-digest-linux.toml` | persona, honorific, fuso, secções, fontes e agendamento trocados para o âmbito do HeavenlyCo Group; comentários reescritos em português |
+| `skills/apollo-motor-local/references/config-apollo-mac.toml` | `configs/openjarvis/examples/morning-digest-mac.toml` e `chat-simple.toml` | motor "cloud" com um modelo Claude em vez do Ollama; persona, tratamento, fuso, secções, fontes, voz e ferramentas trocados; comentários reescritos |
 
 O aviso de modificação vai também no cabeçalho do próprio ficheiro, onde quem o
 copia o vê.
