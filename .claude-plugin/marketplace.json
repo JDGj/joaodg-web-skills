@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "joaodg-web-skills",
-  "description": "Skills e plugins usados pelo estudio JoaoDG em trabalho web.",
+  "description": "Skills e plugins usados pelo estúdio JoaoDG em trabalho web.",
   "owner": {
     "name": "Joao",
     "url": "https://joaodg.pt"
@@ -10,7 +10,7 @@
     {
       "name": "joaodg-web",
       "source": "./plugins/joaodg-web",
-      "description": "Skills proprias do estudio JoaoDG.",
+      "description": "Skills próprias do estúdio JoaoDG.",
       "category": "development",
       "tags": [
         "joaodg",
@@ -20,7 +20,7 @@
     {
       "name": "apollo",
       "source": "./plugins/apollo",
-      "description": "O assistente operacional do HeavenlyCo Group: identidade e ambito, briefing matinal, e a fronteira de acesso do ADR-001.",
+      "description": "O assistente operacional do HeavenlyCo Group: identidade e âmbito, briefing matinal, e a fronteira de acesso do ADR-001.",
       "category": "productivity",
       "tags": [
         "apollo",
@@ -30,13 +30,26 @@
       ]
     },
     {
+      "name": "apollo-local",
+      "source": "./plugins/apollo-local",
+      "description": "O Apollo a correr em casa, sobre o motor OpenJarvis (Apache 2.0): persona própria, briefing falado, modelos locais e as nossas skills importadas.",
+      "category": "productivity",
+      "tags": [
+        "apollo",
+        "heavenlyco",
+        "openjarvis",
+        "local",
+        "briefing"
+      ]
+    },
+    {
       "name": "apple-design",
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/emilkowalski/skills.git",
         "path": "skills/apple-design"
       },
-      "description": "Principios de design e movimento fluido da Apple, traduzidos para a web (springs, gestos, momentum, materiais translucidos, tipografia).",
+      "description": "Princípios de design e movimento fluido da Apple, traduzidos para a web (springs, gestos, momentum, materiais translúcidos, tipografia).",
       "author": {
         "name": "Emil Kowalski",
         "url": "https://github.com/emilkowalski"
@@ -56,7 +69,7 @@
         "source": "url",
         "url": "https://github.com/DietrichGebert/ponytail.git"
       },
-      "description": "Modo senior preguicoso: forca a solucao mais simples que funciona (YAGNI, stdlib primeiro, uma linha em vez de cinquenta). Inclui ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain e ponytail-help.",
+      "description": "Modo sénior preguiçoso: força a solução mais simples que funciona (YAGNI, stdlib primeiro, uma linha em vez de cinquenta). Inclui ponytail-review, ponytail-audit, ponytail-debt, ponytail-gain e ponytail-help.",
       "author": {
         "name": "Dietrich Gebert",
         "url": "https://github.com/DietrichGebert"
