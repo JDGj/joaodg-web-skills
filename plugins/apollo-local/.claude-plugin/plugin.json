@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "apollo-local",
+  "displayName": "Apollo Local",
+  "description": "O Apollo a correr em casa, sobre o motor OpenJarvis (Apache 2.0): persona própria, briefing falado, modelos locais e as nossas skills importadas. Não substitui o plugin apollo - é o motor que ele passa a ter.",
+  "author": {
+    "name": "João Gaiteiro",
+    "url": "https://heavenlyco-group.com"
+  },
+  "homepage": "https://heavenlyco-group.com",
+  "keywords": [
+    "apollo",
+    "heavenlyco",
+    "openjarvis",
+    "local",
+    "briefing"
+  ]
+}

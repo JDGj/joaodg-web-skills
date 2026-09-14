@@ -19,3 +19,13 @@ jobs:
         run: claude plugin validate ./plugins/joaodg-web
       - name: Validate skill frontmatter
         run: claude plugin validate ./plugins/joaodg-web/skills
+      - name: Validate apollo plugin
+        run: claude plugin validate ./plugins/apollo
+      - name: Validate apollo skills
+        run: claude plugin validate ./plugins/apollo/skills
+      - name: Validate apollo-local plugin
+        run: claude plugin validate ./plugins/apollo-local
+      - name: Validate apollo-local skills
+        run: claude plugin validate ./plugins/apollo-local/skills
+      - name: Validate config preset (TOML)
+        run: python3 -c "import tomllib,sys; tomllib.load(open('plugins/apollo-local/skills/apollo-motor-local/references/config-apollo.toml','rb')); print('TOML ok')"

@@ -1,0 +1,68 @@
+# Apollo - preset do motor local (HeavenlyCo Group)
+#
+# DERIVADO de configs/openjarvis/examples/morning-digest-linux.toml do projeto
+# OpenJarvis (https://github.com/open-jarvis/OpenJarvis), Apache License 2.0.
+# ALTERADO pelo estúdio JoaoDG / HeavenlyCo Group em 2026-09-14: persona,
+# tratamento, fuso horário, secções, fontes, agendamento e ferramentas trocados
+# para o âmbito do grupo; comentários reescritos.
+# Cópia da licença: plugins/apollo-local/LICENSE-Apache-2.0.txt
+#
+# Destino: ~/.openjarvis/config.toml  (ou $OPENJARVIS_HOME/config.toml)
+# TOML é UTF-8 por especificação: os acentos abaixo são lidos tal como estão.
+
+[engine]
+default = "ollama"
+
+[engine.ollama]
+host = "http://localhost:11434"
+
+[intelligence]
+default_model = "qwen3.5:9b"
+
+[agent]
+default_agent = "simple"
+
+# shell_exec NÃO entra. Um assistente que lê correio de estranhos e sabe correr
+# comandos é a definição do problema. Ver ADR-001 (fronteira de acesso).
+[tools]
+enabled = ["file_read", "digest_collect", "text_to_speech"]
+
+# --- Briefing matinal ------------------------------------------------------
+
+[digest]
+enabled = true
+schedule = "0 7 * * *"
+timezone = "Europe/Lisbon"
+
+# O nome carrega ~/.openjarvis/prompts/personas/apollo.md. Uma gralha aqui NÃO
+# dá erro: o briefing sai sem persona nenhuma. Confirmar o ficheiro depois de
+# instalar e depois de cada atualização.
+persona = "apollo"
+
+# Em português não há "sir". O espaço do tratamento é o nome.
+honorific = "João"
+
+# A voz fica local. O exemplo de origem usa "openai", e isso mandaria o texto do
+# briefing - conteúdo do correio e da agenda - para fora de casa, que é
+# exatamente o que este motor existe para evitar. O kokoro corre na máquina.
+# Preço a pagar: o kokoro só tem português do Brasil (prefixo de voz "p"), não
+# tem português europeu. Para trocar por uma voz melhor à custa de mandar o
+# texto para fora: tts_backend = "openai", voice_id = "onyx".
+tts_backend = "kokoro"
+
+# O que decide a língua é o PREFIXO da voz ("p" = português do Brasil). Um
+# voice_id sem prefixo reconhecido cai em "af_heart" - inglês americano - sem
+# dizer nada. Confirmar o nome exato da voz contra a versão do kokoro instalada.
+voice_id = "pf_dora"
+voice_speed = 1.0
+
+# Duas das cinco fontes do briefing. Painel, Stripe e Cloudflare não têm
+# conector no motor - ver a skill apollo-motor-local, secção "o que o motor
+# local ainda não consegue ler".
+sections = ["calendar", "messages"]
+
+[digest.calendar]
+sources = ["gcalendar"]
+
+[digest.messages]
+sources = ["gmail"]

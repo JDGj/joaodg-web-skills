@@ -5,6 +5,8 @@ Marketplace de plugins Claude do estúdio JoaoDG. Um repositório, três plugins
 | Plugin | Origem | O que traz |
 |---|---|---|
 | `joaodg-web` | este repo (`./plugins/joaodg-web`) | skills próprias |
+| `apollo` | este repo (`./plugins/apollo`) | o assistente operacional do HeavenlyCo Group: identidade e âmbito, briefing matinal, fronteira de acesso |
+| `apollo-local` | este repo (`./plugins/apollo-local`) | o mesmo Apollo a correr em casa, sobre o motor OpenJarvis: persona, preset, importação de skills |
 | `apple-design` | `emilkowalski/skills`, subpasta `skills/apple-design` | design e movimento fluido Apple, traduzido para a web |
 | `ponytail` | `DietrichGebert/ponytail` | modo "senior preguiçoso": YAGNI, stdlib primeiro, menos código (6 skills) |
 
@@ -14,7 +16,7 @@ quando ele publica. Também evita redistribuir trabalho de terceiros.
 
 ## Instalar
 
-### Claude (web, Desktop, Cowork) — planos pagos
+### Claude (web, Desktop, Cowork) - planos pagos
 
 1. `Customize` → separador `Plugins`.
 2. Em `Personal plugins`, botão `+` → `Add marketplace` → `Add from a repository`.
@@ -26,6 +28,8 @@ quando ele publica. Também evita redistribuir trabalho de terceiros.
 ```
 /plugin marketplace add JDGj/joaodg-web-skills
 /plugin install joaodg-web@joaodg-web-skills
+/plugin install apollo@joaodg-web-skills
+/plugin install apollo-local@joaodg-web-skills
 /plugin install apple-design@joaodg-web-skills
 /plugin install ponytail@joaodg-web-skills
 ```
@@ -33,16 +37,20 @@ quando ele publica. Também evita redistribuir trabalho de terceiros.
 Um comando por mensagem. Depois `/reload-plugins` se for pedido.
 
 Quem abrir uma sessão Claude Code dentro deste repo e confiar na pasta recebe o marketplace
-automaticamente via `.claude/settings.json` — não precisa de correr nada.
+automaticamente via `.claude/settings.json` - não precisa de correr nada.
 
 ## Atualização dinâmica
 
-Nenhum manifesto aqui declara `version`. **É deliberado.** Com `version` definido, o plugin fica
-preso a essa string e ninguém recebe alterações até haver bump; sem `version`, em fontes git a
-versão é o SHA do commit, por isso qualquer push passa a ser uma atualização.
+A regra do repo é **não declarar `version`**. Com `version` definido, o plugin fica preso a essa
+string e ninguém recebe alterações até haver bump; sem `version`, em fontes git a versão é o SHA
+do commit, por isso qualquer push passa a ser uma atualização.
+
+**O `apollo` é a excepção e provavelmente não devia ser:** declara `version: 0.5.0`, o que o
+prende a essa string. Ou se tira, e volta a valer "push = update", ou se assume que aquele plugin
+tem releases e se faz bump a cada alteração. Por decidir.
 
 Se um dia quiseres releases estáveis, acrescenta `version` ao `plugin.json` e passa a fazer bump
-em cada release — mas aí perdes o comportamento "push = update".
+em cada release - mas aí perdes o comportamento "push = update".
 
 O catálogo em si (`marketplace.json`) não é lido a cada mensagem: o cliente sincroniza-o. Em
 Claude Code, `/plugin marketplace update joaodg-web-skills`. Na app, `re-sync` no cartão do
@@ -55,7 +63,7 @@ plugins/joaodg-web/skills/<nome>/SKILL.md
 ```
 
 Nome da pasta igual ao `name` do frontmatter, kebab-case. Ver `skills/exemplo-skill/` como molde.
-Commit, push, sync. Não é preciso mexer no `marketplace.json` — as skills são descobertas sozinhas.
+Commit, push, sync. Não é preciso mexer no `marketplace.json` - as skills são descobertas sozinhas.
 
 Para adicionar um **plugin** novo (conjunto de skills com identidade própria), cria
 `plugins/<nome>/` com o seu `.claude-plugin/plugin.json` e regista-o no array `plugins` do
@@ -67,6 +75,10 @@ Para adicionar um **plugin** novo (conjunto de skills com identidade própria), 
 claude plugin validate .
 claude plugin validate ./plugins/joaodg-web
 claude plugin validate ./plugins/joaodg-web/skills
+claude plugin validate ./plugins/apollo
+claude plugin validate ./plugins/apollo/skills
+claude plugin validate ./plugins/apollo-local
+claude plugin validate ./plugins/apollo-local/skills
 ```
 
 O GitHub Action em `.github/workflows/validate.yml` corre isto a cada push. Vale a pena: um
@@ -78,7 +90,7 @@ erro real só aparece nos logs locais.
 - O repositório tem de ser **público**. O sync do lado do Claude é anónimo; repositórios privados
   falham por esta via (só funcionam via Organization settings, em planos Team/Enterprise).
 - Plugins exigem plano pago (Pro, Max, Team, Enterprise).
-- Skills funcionam no chat web, no Desktop e no Cowork. Hooks e sub-agentes só correm no Cowork —
+- Skills funcionam no chat web, no Desktop e no Cowork. Hooks e sub-agentes só correm no Cowork -
   o `ponytail` tem dois hooks Node.js para ativação automática; no chat, as skills continuam a
   funcionar, só não se auto-ativam.
 - Se a app rejeitar a entrada `git-subdir` do `apple-design`, o plano B é copiar a pasta
@@ -88,5 +100,9 @@ erro real só aparece nos logs locais.
 
 ## Atribuição
 
-- `apple-design` — Emil Kowalski, <https://github.com/emilkowalski/skills>
-- `ponytail` — Dietrich Gebert, MIT, <https://github.com/DietrichGebert/ponytail>
+- `apple-design` - Emil Kowalski, <https://github.com/emilkowalski/skills>
+- `apollo-local` - assenta no **OpenJarvis**, Apache 2.0,
+  <https://github.com/open-jarvis/OpenJarvis>. O motor não está copiado para aqui: o plugin traz
+  a configuração, a persona e as instruções. Ficheiros derivados e avisos de modificação em
+  [`plugins/apollo-local/NOTICE.md`](plugins/apollo-local/NOTICE.md).
+- `ponytail` - Dietrich Gebert, MIT, <https://github.com/DietrichGebert/ponytail>

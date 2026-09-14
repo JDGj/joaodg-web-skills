@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "apollo",
+  "displayName": "Apollo",
+  "description": "O assistente operacional do HeavenlyCo Group: identidade e âmbito, briefing matinal, e a fronteira de acesso do ADR-001.",
+  "author": {
+    "name": "João Gaiteiro",
+    "url": "https://heavenlyco-group.com"
+  },
+  "homepage": "https://heavenlyco-group.com",
+  "keywords": [
+    "apollo",
+    "heavenlyco",
+    "briefing",
+    "operacoes"
+  ],
+  "version": "0.5.0"
+}
